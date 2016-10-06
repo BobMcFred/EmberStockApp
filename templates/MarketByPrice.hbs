@@ -1,0 +1,52 @@
+<div class="small-5 columns" id="MarketByPrice"><!--Two tables placed side by side to show buy and sell orders-->
+    <h6><b>Market By Price {{name}}</b></h6>
+
+    <div class="small-6 columns" style="padding: 0%">
+        <table style="width: 100%">
+            <tr>
+                <th colspan="3" class="text-center">Buy</th>
+            </tr>
+            <tr>
+                <th class="text-center">#</th>
+                <th class="text-center">Volume</th>
+                <th class="text-center">Price</th>
+            </tr>
+            {{#each item in theBuyOrdersP}}
+                <tr>
+                    <td>{{item.num}}</td>
+                    <td>{{item.quantity}}</td>
+                    <td>{{item.price}}</td>
+                </tr>
+            {{else}}
+                <tr><td colspan="4" class="text-center">No orders currently active</td></tr>
+            {{/each}}
+        </table>
+    </div>
+
+
+    <div class="small-6 columns" style="padding: 0%">
+        <table style="width: 100%">
+            <tr>
+                <th colspan="3" class="text-center">Sell</th>
+            </tr>
+            <tr>
+                <th class="text-center">Price</th>
+                <th class="text-center">Volume</th>
+                <th class="text-center">#</th>
+            </tr>
+            {{#each item in theSellOrdersP}}
+                <tr>
+                    <td>{{item.price}}</td>
+                    <td>{{item.quantity}}</td>
+                    <td>{{item.num}}</td>
+                </tr>
+            {{else}}
+                <tr><td colspan="4" class="text-center">No orders currently active</td></tr>
+            {{/each}}
+        </table>
+    </div>
+</div>
+<div class="small-2 columns" id="BuyLogo"><!--Logo is shown-->
+    <label class="text-center">{{symbol}} </label>
+    <img {{bind-attr src=logo}}>
+</div>

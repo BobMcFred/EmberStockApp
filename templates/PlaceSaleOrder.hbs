@@ -1,0 +1,28 @@
+<div class="row">
+    <div class="twelve columns text-center">
+        <img src="images/courseLogo.png" alt="Yeah Ouda, yeah science!" width="400" align="middle">
+    </div>
+</div>
+
+<div class="row" id="SaleHead">
+    <h1>Place Sale Order for: {{name}}</h1>
+    <br>
+</div>
+
+<div class="row" id="SaleForm">
+    <div class="small-9 columns">
+        <label>Number of Shares: </label>
+        {{input value=quantity id="quantity" type="number" min="0"}}
+        <br>
+        <label>Sale Price: </label>
+        {{input value=price id="price" type="number" min="0"}}
+        <br>
+        <button name="SaleSubmit" {{action 'save'}} class="button round">Submit</button><!--submit Sale Order-->
+        {{#link-to 'StockStateSummary' class="button round" }}Cancel{{/link-to}}
+    </div>
+    <div class="small-3 columns" id="SaleLogo">
+        <label class="text-center">{{symbol}} </label>
+        <img {{bind-attr src=logo}}>
+    </div>
+</div>
+

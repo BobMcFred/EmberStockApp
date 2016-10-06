@@ -1,0 +1,45 @@
+<div class="small-5 columns" id="MarketByOrder"><!--Two tables placed side by side to show buy and sell orders-->
+    <h6><b>Market By Order {{name}}</b></h6>
+
+    <div class="small-6 columns" style="padding: 0%">
+        <table style="width: 100%">
+            <tr>
+                <th colspan="2" class="text-center">Buy</th>
+            </tr>
+            <tr>
+                <th class="text-center">Volume</th>
+                <th class="text-center">Price</th>
+            </tr>
+            {{#each item in theBuyOrders}}
+                <tr>
+                    <td>{{item.quantity}}</td>
+                    <td>{{item.price}}</td>
+                </tr>
+            {{else}}
+                <tr><td colspan="4" class="text-center">No orders currently active</td></tr>
+            {{/each}}
+        </table>
+    </div>
+
+
+    <div class="small-6 columns" style="padding: 0%">
+        <table style="width: 100%">
+            <tr>
+                <th colspan="2" class="text-center">Sell</th>
+            </tr>
+            <tr>
+                <th class="text-center">Price</th>
+                <th class="text-center">Volume</th>
+            </tr>
+            {{#each item in theSellOrders}}
+                <tr>
+                    <td>{{item.price}}</td>
+                    <td>{{item.quantity}}</td>
+                </tr>
+            {{else}}
+                <tr><td colspan="4" class="text-center">No orders currently active</td></tr>
+            {{/each}}
+        </table>
+    </div>
+
+</div>

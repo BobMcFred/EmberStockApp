@@ -1,0 +1,52 @@
+<div class="row">
+    <div class="twelve columns text-center">
+        {{#link-to 'StockStateSummary'}}<img src="images/courseLogo.png" alt="Yeah Ouda, yeah science!" width="400" align="middle">{{/link-to}}
+    </div>
+</div>
+<br>
+<div class="row">
+    <nav class="top-bar" data-topbar role="navigation">
+        <section class="top-bar-section">
+            <!-- Left Nav Section -->
+            <ul class="left">
+                <li {{action 'maSort'}}>{{#link-to 'StockStateSummary'}}Most Active By Volume{{/link-to}}</li><!--Change Sorting-->
+                <li {{action 'gSort'}}>{{#link-to 'StockStateSummary'}}Gainers{{/link-to}}</li>
+                <li {{action 'lSort'}}>{{#link-to 'StockStateSummary'}}Losers{{/link-to}}</li>
+            </ul>
+        </section>
+    </nav>
+</div>
+<div class="row" style="height: 300px; overflow-y: scroll; background-color: rgba(81, 110, 133, 0.9);">
+    <table style="width: 100%">
+        <tr>
+            <th>Company</th>
+            <th>Open Price</th>
+            <th>Current Price</th>
+            <th>Change Value</th>
+            <th></th>
+            <th>Change %</th>
+            <th>Share Volume</th>
+            <th></th>
+        </tr>
+        {{#each item in theList}}<!--Load content based on chosen sorting-->
+            <tr>
+                <td>{{#link-to 'StockStateSummary.MarketByOrder' item.id}}{{item.name}}{{/link-to}}</td><!--link to view market depth-->
+                <td>{{item.openPrice}}</td>
+                <td>{{item.currentPrice}}</td>
+                <td>{{item.changeValue}}</td>
+                <td><img {{bind-attr src=item.changeDir}}></td>
+                <td>{{item.changePerc}}%</td>
+                <td>{{item.volume}}</td>
+                <td>
+                    {{#link-to 'PlaceBidOrder' item.id class="button round tiny" }}Buy{{/link-to}}<!--buttons to place orders-->
+                    {{#link-to 'PlaceSaleOrder' item.id class="button round tiny" }}Sell{{/link-to}}
+                </td>
+            </tr>
+        {{/each}}
+    </table>
+</div>
+<br>
+<div class="row">
+    {{outlet "mbo"}}<!--named outlets for market depth-->
+    {{outlet "mbp"}}
+</div>
